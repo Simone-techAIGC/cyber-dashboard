@@ -5,7 +5,20 @@ import plotly.express as px
 from streamlit_autorefresh import st_autorefresh
 import pycountry
 import random
-
+import streamlit.components.v1 as components
+# Google Analytics 追踪代码
+GA_JS = """
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-F9YMEZW7V8"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-F9YMEZW7V8');
+</script>
+"""
+# 在页面加载时注入（建议放在最顶部）
+components.html(GA_JS, height=0)
 # ========== 页面设置 ==========
 st.set_page_config(layout="wide", page_title="CYBER OPS CENTER", page_icon="🖥️")
 st_autorefresh(interval=60_000, key="cyber_refresh")
